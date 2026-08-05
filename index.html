@@ -4,56 +4,111 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ascend — AI Fitness &amp; Nutrition</title>
-<meta name="description" content="Ascend is an AI fitness & nutrition app. Support, privacy, and terms.">
+<meta name="description" content="Ascend builds your workout and nutrition plan with AI, tracks your calories with a photo, and adapts to your recovery. Coming soon to the App Store.">
 <style>
+  /* Deliberately single-theme: the site mirrors the app's dark, indigo-accent brand. */
   :root{
-    --bg:#fbfbfd; --panel:#ffffff; --ink:#191b22; --muted:#5b6472; --line:#e7e9ef;
-    --accent:#5b5bf5; --accent-ink:#4a3fe0;
+    --bg:#0a0b10; --panel:#14161d; --line:#262b36;
+    --ink:#f3f5f8; --muted:#8b93a4; --accent:#6c6cf5; --accent-soft:rgba(108,108,245,.14);
     --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
-  @media (prefers-color-scheme:dark){
-    :root{ --bg:#0b0c11; --panel:#14161d; --ink:#eef0f4; --muted:#9aa1af; --line:#242833; --accent:#8f8fff; --accent-ink:#b7b7ff; }
-  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased;
-       min-height:100vh;display:flex;flex-direction:column}
-  .wrap{max-width:640px;margin:0 auto;padding:0 24px;width:100%}
-  main{flex:1;display:flex;align-items:center;padding:70px 0}
-  .brand{font-weight:800;letter-spacing:.3em;text-transform:uppercase;font-size:16px}
-  .tag{color:var(--accent-ink);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:12px;margin-top:10px}
-  h1{font-size:clamp(30px,6vw,46px);letter-spacing:-.025em;margin:22px 0 0;line-height:1.08}
-  .lede{color:var(--muted);font-size:18px;margin:18px 0 0;max-width:52ch}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:34px}
-  .card h2{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
-  .email{font-size:20px;font-weight:750;letter-spacing:-.01em}
-  .email a{color:var(--ink);text-decoration:none;border-bottom:2px solid color-mix(in srgb,var(--accent) 45%,transparent)}
-  .email a:hover{border-bottom-color:var(--accent)}
-  .card p{color:var(--muted);font-size:14px;margin:10px 0 0}
-  .links{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px}
-  .links a{color:var(--accent-ink);text-decoration:none;font-weight:650;font-size:15px}
-  .links a:hover{text-decoration:underline}
-  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:13px}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  header{padding:26px 0;border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .brand{font-weight:800;letter-spacing:.32em;font-size:15px}
+  .brand span{color:var(--accent)}
+  nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;margin-left:22px}
+  nav a:hover{color:var(--ink)}
+  .hero{padding:96px 0 72px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-40% -20% auto;height:120%;
+    background:radial-gradient(ellipse at 50% 0%,rgba(108,108,245,.18),transparent 62%);pointer-events:none}
+  .hero .eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--accent);
+    background:var(--accent-soft);border:1px solid rgba(108,108,245,.35);border-radius:999px;padding:7px 16px;margin-bottom:26px}
+  h1{font-size:clamp(38px,7.5vw,72px);line-height:1.02;margin:0;font-weight:850;font-style:italic;letter-spacing:-.02em;text-transform:uppercase}
+  h1 em{font-style:italic;color:var(--accent)}
+  .hero p{max-width:56ch;margin:22px auto 0;color:var(--muted);font-size:18px}
+  .cta{display:inline-flex;align-items:center;gap:10px;margin-top:34px;background:var(--accent);color:#fff;
+    font-weight:800;font-size:15px;letter-spacing:.04em;border-radius:999px;padding:16px 30px;text-decoration:none}
+  .cta:hover{filter:brightness(1.08)}
+  .cta-sub{display:block;margin-top:14px;color:var(--muted);font-size:13px}
+  .features{padding:64px 0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .card .ico{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;
+    font-size:20px;margin-bottom:14px}
+  .card h3{margin:0 0 6px;font-size:16px;letter-spacing:-.01em}
+  .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+  .connect{padding:48px 0 72px;text-align:center}
+  .connect h2{font-size:22px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px}
+  .connect p{color:var(--muted);margin:0 0 26px;font-size:15px}
+  .socials{display:flex;justify-content:center;gap:14px}
+  .socials a{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;
+    background:var(--panel);border:1px solid var(--line);color:var(--ink);text-decoration:none}
+  .socials a:hover{border-color:var(--accent);color:var(--accent)}
+  .socials svg{width:22px;height:22px;fill:currentColor}
+  .support{margin-top:30px;font-size:15px;color:var(--muted)}
+  .support a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid rgba(108,108,245,.5)}
+  .support a:hover{border-bottom-color:var(--accent)}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  footer a{color:var(--muted);text-decoration:none;margin-left:16px}
+  footer a:hover{color:var(--ink)}
+  @media (max-width:560px){ nav a{margin-left:14px} .hero{padding:72px 0 56px} }
 </style>
 </head>
 <body>
-<main><div class="wrap">
-  <div class="brand">Ascend</div>
-  <div class="tag">AI Fitness &amp; Nutrition</div>
-  <h1>Train smarter. Eat better. Recover right.</h1>
-  <p class="lede">Ascend builds you a personalized workout and nutrition plan with AI, tracks your calories and progress, and adapts to your recovery.</p>
 
-  <div class="card">
-    <h2>Support</h2>
-    <div class="email"><a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a></div>
-    <p>Questions, feedback, account help, or a bug? Email us and we'll get back to you as soon as we can.</p>
-  </div>
+<header><div class="wrap">
+  <div class="brand">ASCE<span>N</span>D</div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="mailto:support@ascendfitness.ai">Support</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+</div></header>
 
-  <div class="links">
+<section class="hero"><div class="wrap">
+  <span class="eyebrow">AI FITNESS &amp; NUTRITION</span>
+  <h1>Dominate<br><em>Your Limits</em></h1>
+  <p>Ascend builds your personalized workout and meal plan with AI, tracks your calories with a photo, and adapts your training to how recovered you actually are.</p>
+  <a class="cta" href="mailto:support@ascendfitness.ai?subject=Ascend%20Early%20Access">Coming Soon to the App&nbsp;Store</a>
+  <span class="cta-sub">Want early access? Email us and we'll add you to TestFlight.</span>
+</div></section>
+
+<div class="wrap">
+  <section class="features" id="features">
+    <div class="card"><div class="ico">🏋️</div><h3>AI Workout Coach</h3><p>A weekly plan built around your goal, equipment, and schedule — and it adapts as you train.</p></div>
+    <div class="card"><div class="ico">📸</div><h3>Snap a Meal</h3><p>Point your camera at any plate and get calories and macros in seconds. Barcode scanning included.</p></div>
+    <div class="card"><div class="ico">🥗</div><h3>Meal Plans</h3><p>Weekly meals matched to your macros and diet, with grocery lists and eating-out guidance.</p></div>
+    <div class="card"><div class="ico">💚</div><h3>Recovery-Aware</h3><p>Connects to Apple Health and WHOOP so hard days land when your body is ready — not when it isn't.</p></div>
+  </section>
+
+  <section class="connect">
+    <h2>Follow the climb</h2>
+    <p>@ascend.ios everywhere</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/ascend.ios" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.36 1.05.42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.17-1.05.36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.42-.36-1.05-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.05-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.52 0-4.76.07-1.06.05-1.63.23-2.01.38-.5.2-.86.43-1.24.8-.37.38-.61.74-.8 1.24-.15.38-.33.95-.38 2.01-.06 1.24-.07 1.61-.07 4.76s0 3.52.07 4.76c.05 1.06.23 1.63.38 2.01.2.5.43.86.8 1.24.38.37.74.61 1.24.8.38.15.95.33 2.01.38 1.24.06 1.61.07 4.76.07s3.52 0 4.76-.07c1.06-.05 1.63-.23 2.01-.38.5-.2.86-.43 1.24-.8.37-.38.61-.74.8-1.24.15-.38.33-.95.38-2.01.06-1.24.07-1.61.07-4.76s0-3.52-.07-4.76c-.05-1.06-.23-1.63-.38-2.01a3.3 3.3 0 0 0-.8-1.24 3.3 3.3 0 0 0-1.24-.8c-.38-.15-.95-.33-2.01-.38-1.24-.06-1.61-.07-4.76-.07Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.15-2.3a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@ascend.ios" aria-label="TikTok" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M16.8 2h-3.1v13.4a2.84 2.84 0 0 1-2.83 2.83 2.84 2.84 0 0 1-2.83-2.83 2.85 2.85 0 0 1 2.83-2.84c.29 0 .57.05.84.13V9.5a6.1 6.1 0 0 0-.84-.06A6.04 6.04 0 0 0 4.83 15.4a6.04 6.04 0 0 0 6.04 6.03 6.04 6.04 0 0 0 6.03-6.03V8.71a7.7 7.7 0 0 0 4.27 1.28V6.9a4.9 4.9 0 0 1-4.37-4.9Z"/></svg>
+      </a>
+      <a href="mailto:support@ascendfitness.ai" aria-label="Email support">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm.4 2.2 7.1 5.32a.9.9 0 0 0 1.05 0l7.05-5.32A.6.6 0 0 0 19.4 7H4.6a.6.6 0 0 0-.2.2ZM20 9.25l-6.55 4.93a2.7 2.7 0 0 1-3.15 0L4 9.4V17a.6.6 0 0 0 .6.6h14.8a.6.6 0 0 0 .6-.6V9.25Z"/></svg>
+      </a>
+    </div>
+    <p class="support">Questions or feedback? <a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a></p>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <span>© 2026 Ascend · Operated by Yaseen Attrah</span>
+  <span>
     <a href="/privacy.html">Privacy Policy</a>
     <a href="/terms.html">Terms of Service</a>
-  </div>
-</div></main>
+  </span>
+</div></footer>
 
-<footer><div class="wrap">© 2026 Ascend · Operated by Yaseen Attrah</div></footer>
 </body>
 </html>
