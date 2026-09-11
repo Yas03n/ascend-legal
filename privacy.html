@@ -62,7 +62,7 @@
   <p>To operate Ascend, data is processed by these providers under their own security and privacy commitments:</p>
   <ul>
     <li><strong>Supabase</strong> — our database, authentication, and private photo storage.</li>
-    <li><strong>Anthropic</strong> — AI processing: your fitness profile and inputs are sent to the Claude model to generate plans, coach replies, and meal-photo analyses. Emails you send to our support address are also processed by Claude to classify them and draft replies (a human reviews escalated issues).</li>
+    <li><strong>Anthropic (Claude API)</strong> — our AI provider. With your permission (see Section 4A), we send Anthropic: your fitness profile (goal, age, sex, height, weight, experience, training days, session length, equipment); your food preferences (diet type, allergies and intolerances, meals per day, disliked foods); your activity in the App (logged workouts and sets, logged meals, weight entries, weekly totals); meal photos you choose to scan; the messages you type to the coach; and your first name. We do <em>not</em> send your email address, Apple ID, progress photos, payment details, or raw Apple Health/WHOOP data. Anthropic processes each request only to produce the response, does not use this data to train its models, and under its commercial API terms may retain request data for a limited period for abuse detection before deleting it. Requests travel through our own server; no other AI company receives your data. Emails you send to our support address are also processed by Claude to classify them and draft replies (a human reviews escalated issues).</li>
     <li><strong>RevenueCat</strong> — subscription and trial management (receives purchase status, not your health data).</li>
     <li><strong>Open Food Facts</strong> — barcode product lookups (receives scanned barcodes).</li>
     <li><strong>USDA FoodData Central</strong> — food nutrition search (receives your search terms).</li>
@@ -72,6 +72,11 @@
   </ul>
   <p>We share data with these processors only as needed to provide the service. We may also disclose information if required by law or to protect our rights, users, or the public.</p>
 
+  <h2>4A. AI Features &amp; Your Permission</h2>
+  <p>Ascend asks for your permission <strong>in the App</strong> before the first time it sends any of your data to our AI provider. The permission screen lists exactly what will be sent, names Anthropic as the recipient, and explains how the data is used. Nothing is sent to Anthropic until you tap Allow.</p>
+  <p>You can withdraw this permission at any time in <strong>Profile → AI &amp; Your Data</strong>. When it is off, Ascend still works: you keep the starter workout and meal plans built from your onboarding answers, and logging, calorie tracking, recovery and progress all run without AI. The AI coach, meal-photo scanning, AI-generated plans and AI swap suggestions stay unavailable until you turn it back on.</p>
+  <p>Your onboarding plan is built from templates on your device and does not involve AI. AI-generated plans are produced only after you subscribe and have given this permission.</p>
+
   <h2>5. Data Storage &amp; Security</h2>
   <p>Your data is stored with Supabase using industry-standard encryption in transit (TLS) and at rest. Access to your records is protected by row-level security so that your account can only read its own data. Progress photos are stored in a private storage bucket accessible only to your authenticated account. No method of transmission or storage is 100% secure, but we take commercially reasonable measures to protect your information and will notify you of any breach as required by law.</p>
 
@@ -79,7 +84,7 @@
   <p>Progress photos are private to you. They are visible only within your logged-in account, are never shared with other users, never used in marketing, and never shared with third parties except the storage infrastructure that hosts them (Supabase). You can delete your progress photos at any time in the App, and they are removed from storage when your account is deleted.</p>
 
   <h2>7. Friends &amp; Community Sharing</h2>
-  <p><strong>Friends (optional):</strong> if you use the Friends feature, other users can find you by the username you choose. Friends you have accepted can see your name, username, and your daily health scores — overall, workout, nutrition, sleep, recovery, and consistency scores (each a 0–100 number). Sleep and recovery scores may be derived from health services you have connected (such as Apple Health or WHOOP). Friends never see your raw health records, logs, photos, or chat history — only the scores. Removing a friend immediately stops all sharing with them.</p>
+  <p><strong>Friends (not available in this version):</strong> the Friends feature is turned off in this release, so no username search, friend list, or score sharing happens at all. When it returns, this is how it will work — if you use the Friends feature, other users can find you by the username you choose. Friends you have accepted can see your name, username, and your daily health scores — overall, workout, nutrition, sleep, recovery, and consistency scores (each a 0–100 number). Sleep and recovery scores may be derived from health services you have connected (such as Apple Health or WHOOP). Friends never see your raw health records, logs, photos, or chat history — only the scores. Removing a friend immediately stops all sharing with them.</p>
   <p><strong>Community foods (optional):</strong> if you submit a custom food to the shared food database, its name and nutrition details become visible to other users after approval. Your name and email are never shown to other users alongside the submission.</p>
 
   <h2>8. Your Rights: Access, Export &amp; Deletion</h2>
