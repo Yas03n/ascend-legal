@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manage Your Subscription — Ascend</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta name="description" content="How to switch plans, cancel, or request a refund for your Ascend subscription.">
 <style>
   :root{
@@ -18,7 +20,15 @@
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.7;-webkit-font-smoothing:antialiased}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
   header{border-bottom:1px solid var(--line);padding:34px 0 26px;margin-bottom:14px}
-  .brand{font-weight:800;letter-spacing:.26em;text-transform:uppercase;font-size:14px;color:var(--ink)}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;font-size:14px;color:var(--ink);border:0}
+  .brand img{width:30px;height:auto}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .topbar .dl{font-size:13px;font-weight:700;letter-spacing:.02em;color:#fff;background:var(--accent);border:0;border-radius:999px;padding:9px 16px}
+  .topbar .dl:hover{filter:brightness(1.08)}
+  .sitefoot{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 60px;color:var(--muted);font-size:14px}
+  .sitefoot nav{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+  .sitefoot a{color:var(--muted);border:0}
+  .sitefoot a:hover{color:var(--ink)}
   h1{font-size:clamp(26px,5vw,36px);margin:18px 0 6px;letter-spacing:-.02em}
   .updated{color:var(--muted);font-size:14px;margin:0}
   main{padding:8px 0 20px}
@@ -37,7 +47,10 @@
 </head>
 <body>
 <header><div class="wrap">
-  <div class="brand">Ascend</div>
+  <div class="topbar">
+    <a class="brand" href="/" aria-label="Ascend home"><img src="/assets/img/mark-96.png" alt="">Ascend</a>
+    <a class="dl" href="https://apps.apple.com/us/app/ascend-ai-fitness-nutrition/id6790593276" target="_blank" rel="noopener">Download on the App Store</a>
+  </div>
   <h1>Manage Your Subscription</h1>
   <p class="updated">Last updated: August 7, 2026</p>
 </div></header>
@@ -46,7 +59,7 @@
   <p class="lede">All Ascend subscriptions are billed through the App&nbsp;Store (Apple). That means your plan, billing, and cancellation are managed securely by Apple — Ascend never stores your payment details. Here's how to do everything.</p>
 
   <h2>Switch Plans</h2>
-  <p>Want to change from weekly to monthly or annual, or move between plans? You can switch anytime:</p>
+  <p>Want to move between the monthly and annual plans? You can switch anytime:</p>
   <ol>
     <li>Open <strong>Settings</strong> on your iPhone</li>
     <li>Tap your <strong>name</strong> at the top</li>
@@ -84,12 +97,16 @@
   <p>If you're having trouble or aren't sure about anything, email us at <a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a> and we'll help you out — usually within a day.</p>
 </main>
 
-<footer class="wrap">
-  <a href="/">home</a>
-  <a href="/privacy.html">privacy</a>
-  <a href="/terms.html">terms</a>
-  <a href="mailto:support@ascendfitness.ai">contact</a>
-  <span>© 2026 Ascend. All rights reserved.</span>
-</footer>
+<footer class="sitefoot"><div class="wrap">
+  <nav aria-label="Footer">
+    <a href="/">Home</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Service</a>
+    <a href="/manage-subscription.html">Manage subscription</a>
+    <a href="mailto:support@ascendfitness.ai">Support</a>
+    <a href="https://apps.apple.com/us/app/ascend-ai-fitness-nutrition/id6790593276" target="_blank" rel="noopener">App Store</a>
+  </nav>
+  <span>© 2026 Ascend · Operated by Yaseen Attrah</span>
+</div></footer>
 </body>
 </html>
