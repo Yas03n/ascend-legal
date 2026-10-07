@@ -52,7 +52,7 @@
     <a class="dl" href="https://apps.apple.com/us/app/ascend-ai-fitness-nutrition/id6790593276" target="_blank" rel="noopener">Download on the App Store</a>
   </div>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: July 13, 2026</p>
+  <p class="updated">Last updated: October 7, 2026</p>
 </div></header>
 
 <main class="wrap">
@@ -62,36 +62,50 @@
   <h2>2. Information We Collect</h2>
   <p><strong>Account information:</strong> name and email address.</p>
   <p><strong>Profile &amp; health-related inputs you provide:</strong> age, height, weight, biological sex, activity level, fitness goal, training experience, available equipment, schedule, dietary preference, food allergies, meals per day, and body-fat estimate.</p>
-  <p><strong>Activity data you create in the App:</strong> workout logs (exercises, sets, reps, weights), food logs, weight and body-measurement logs, sleep logs, streaks, and coach chat messages.</p>
-  <p><strong>Photos:</strong> progress photos you upload (stored privately for your account) and meal photos you scan (processed to produce a nutritional estimate).</p>
+  <p><strong>Activity data you create in the App:</strong> workout logs (exercises, sets, reps, weights, and how each exercise felt — including any discomfort you report and where), food logs, weight and body-measurement logs, sleep logs, streaks, and coach chat messages.</p>
+  <p><strong>Photos:</strong> progress photos you upload (stored privately for your account), meal photos you scan (processed to produce a nutritional estimate), and, only if you choose to make one, the selfie you take for your goal picture and the finished goal picture (see Section 4B).</p>
   <p><strong>Connected health services (optional):</strong> if you connect Apple Health or WHOOP, we read and/or write the data you authorize, such as workouts, steps, and weight.</p>
   <p><strong>Device &amp; diagnostics:</strong> device model, OS version, app version, and crash/error reports.</p>
   <p><strong>Support communications:</strong> emails you send to our support address.</p>
 
   <h2>3. How We Use Your Information</h2>
-  <p>We use your information to: (a) generate your personalized workout and meal plans and adapt them over time; (b) analyze meal photos you submit and estimate nutrition; (c) operate core features such as logging, streaks, progress charts, and the AI coach; (d) manage your subscription and free trial; (e) provide customer support; (f) send notifications you enable (reminders, trial-ending alerts); (g) monitor crashes and fix bugs; and (h) understand aggregate usage to improve the App. We do not use your progress or meal photos for advertising, and we do not sell personal data.</p>
+  <p>We use your information to: (a) generate your personalized workout and meal plans and adapt them over time; (b) analyze meal photos you submit and estimate nutrition; (c) operate core features such as logging, streaks, progress charts, and the AI coach; (d) manage your subscription and free trial; (e) provide customer support; (f) send notifications you enable (reminders, trial-ending alerts); (g) monitor crashes and fix bugs; (h) understand aggregate usage to improve the App; and (i) make your goal picture, only if you ask for one (Section 4B). We do not use your progress photos, meal photos, selfie or goal picture for advertising or marketing, and we do not sell personal data.</p>
 
   <h2>4. Third-Party Services We Share Data With</h2>
   <p>To operate Ascend, data is processed by these providers under their own security and privacy commitments:</p>
   <ul>
     <li><strong>Supabase</strong> — our database, authentication, and private photo storage.</li>
-    <li><strong>Anthropic (Claude API)</strong> — our AI provider. With your permission (see Section 4A), we send Anthropic: your fitness profile (goal, age, sex, height, weight, experience, training days, session length, equipment); your food preferences (diet type, allergies and intolerances, meals per day, disliked foods); your activity in the App (logged workouts and sets, logged meals, weight entries, weekly totals); meal photos you choose to scan; the messages you type to the coach; and your first name. We do <em>not</em> send your email address, Apple ID, progress photos, payment details, or raw Apple Health/WHOOP data. Anthropic processes each request only to produce the response, does not use this data to train its models, and under its commercial API terms may retain request data for a limited period for abuse detection before deleting it. Requests travel through our own server; no other AI company receives your data. Emails you send to our support address are also processed by Claude to classify them and draft replies (a human reviews escalated issues).</li>
+    <li><strong>Anthropic (Claude API)</strong> — our AI provider. With your permission (see Section 4A), we send Anthropic: your fitness profile (goal, age, sex, height, weight, experience, training days, session length, equipment); your food preferences (diet type, allergies and intolerances, meals per day, disliked foods); your activity in the App (logged workouts and sets, logged meals, weight entries, sleep entries, weekly totals); meal photos you choose to scan and any photos you send the coach; the messages you type to the coach; and your first name. We do <em>not</em> send your email address, Apple ID, progress photos, payment details, or raw Apple Health/WHOOP data. Anthropic processes each request only to produce the response, does not use this data to train its models, and under its commercial API terms may retain request data for a limited period for abuse detection before deleting it. Requests travel through our own server. Apart from OpenAI for the optional goal picture (below and Section 4B), no other AI company receives your data. Emails you send to our support address are also processed by Claude to classify them and draft replies (a human reviews escalated issues).</li>
+    <li><strong>OpenAI (image service)</strong> — only if you choose to make a goal picture and agree on its own permission screen (see Section 4B). We send OpenAI the selfie you take for it and a short written description built from your stated answers (for example your sex and goal), never your name, email address or account details. OpenAI uses them only to make your picture, does not use them to train its models, and under its API terms may keep them for up to 30 days to monitor for abuse before deleting them.</li>
     <li><strong>RevenueCat</strong> — subscription and trial management (receives purchase status, not your health data).</li>
     <li><strong>Open Food Facts</strong> — barcode product lookups (receives scanned barcodes).</li>
     <li><strong>USDA FoodData Central</strong> — food nutrition search (receives your search terms).</li>
     <li><strong>Apple HealthKit / WHOOP</strong> — only if you connect them, and only the data types you authorize. Health data from these services is never used for advertising or shared with third parties for marketing.</li>
     <li><strong>Sentry</strong> — crash and error reporting (device/diagnostic data).</li>
     <li><strong>Unsplash</strong> — meal and workout imagery is fetched for display; no personal data is sent beyond standard image requests.</li>
+    <li><strong>Expo (Expo Application Services)</strong> — issues the push notification token for your device so reminders can reach you.</li>
+    <li><strong>Resend</strong> — delivers our replies to support emails you send us.</li>
   </ul>
   <p>We share data with these processors only as needed to provide the service. We may also disclose information if required by law or to protect our rights, users, or the public.</p>
 
   <h2>4A. AI Features &amp; Your Permission</h2>
   <p>Ascend asks for your permission <strong>in the App</strong> before the first time it sends any of your data to our AI provider. The permission screen lists exactly what will be sent, names Anthropic as the recipient, and explains how the data is used. Nothing is sent to Anthropic until you tap Allow.</p>
-  <p>You can withdraw this permission at any time in <strong>Profile → AI &amp; Your Data</strong>. When it is off, Ascend still works: you keep the starter workout and meal plans built from your onboarding answers, and logging, calorie tracking, recovery and progress all run without AI. The AI coach, meal-photo scanning, AI-generated plans and AI swap suggestions stay unavailable until you turn it back on.</p>
-  <p>Your onboarding plan is built from templates on your device and does not involve AI. AI-generated plans are produced only after you subscribe and have given this permission.</p>
+  <p>You can withdraw this permission at any time in <strong>Profile → AI &amp; Your Data</strong>. When it is off, Ascend still works: your workout plans (always built by Ascend’s own training rules, never by AI), the starter meal plans built from your onboarding answers, logging, calorie tracking, recovery and progress all run without AI. The AI coach, meal-photo scanning, AI-generated meal plans and AI meal and restaurant swap suggestions stay unavailable until you turn it back on.</p>
+  <p>Your onboarding plan is built on your device and does not involve AI. AI-generated meal plans are produced only after you subscribe and have given this permission.</p>
+  <p>In app versions before 1.0.3, personalized workout plans for subscribers were generated with Claude, using the same permission and the same data described above.</p>
+
+  <p>The optional goal picture has its own, separate permission, described in Section 4B. The permission in this section never covers your selfie.</p>
+
+  <h2>4B. Your Goal Picture (Optional Selfie)</h2>
+  <p>Ascend can make one picture of you at your goal: a realistic illustration of the same person after about 12 weeks of training. It is optional, available only to signed-in users aged 18 or older, and skipping it changes nothing about your plan or your subscription.</p>
+  <p><strong>Your permission comes first.</strong> Before the camera opens, a separate permission screen names OpenAI as the recipient, lists what is sent and why, says how long it is kept and how to delete it, and asks you to tick an unticked box confirming that the face is your own and that you agree. This permission is separate from the Terms, from this policy and from the AI permission in Section 4A. Nothing is sent until you tick the box and take the selfie.</p>
+  <p><strong>What is sent, and why.</strong> The selfie is taken live with your front camera; Ascend never reads your photo library for it. The App sends it to our own server with your stated answers (sex, age, height, weight, goal, training experience and body-fat estimate). Our server uses the answers to confirm you are 18 or older and to write a short description of the change, then sends OpenAI’s image service only the selfie and that description, only to make your goal picture. The answers are not stored with the request.</p>
+  <p><strong>Your selfie is not kept.</strong> Ascend never writes your selfie to storage or a database, and it is deleted from your phone as soon as your picture is made (or the attempt ends). Ascend does not measure your face, create a face template or face scan, or use your selfie to identify you. OpenAI processes the selfie only to make the picture, does not use it to train its models, and may keep it for up to 30 days only to monitor for abuse before deleting it.</p>
+  <p><strong>Your picture stays private.</strong> The finished picture is kept on your phone and in a private storage folder that only your signed-in account can open (hosted by Supabase). It is never shown to other users, posted, shared with other third parties, used in ads, marketing or App Store screenshots, or used to train any model. Each account can make at most two pictures, and a new one replaces the old one. To enforce that limit we keep a small record of each attempt (its date and whether it worked, never the image).</p>
+  <p><strong>Delete it any time.</strong> <strong>Profile → AI &amp; Your Data → Your goal picture → Delete</strong> removes the picture from your phone and from our storage straight away. Deleting your account deletes it too, along with the attempt records. Deleting your picture also withdraws your permission: nothing more is sent unless you take a new selfie and agree again.</p>
 
   <h2>5. Data Storage &amp; Security</h2>
-  <p>Your data is stored with Supabase using industry-standard encryption in transit (TLS) and at rest. Access to your records is protected by row-level security so that your account can only read its own data. Progress photos are stored in a private storage bucket accessible only to your authenticated account. No method of transmission or storage is 100% secure, but we take commercially reasonable measures to protect your information and will notify you of any breach as required by law.</p>
+  <p>Your data is stored with Supabase using industry-standard encryption in transit (TLS) and at rest. Access to your records is protected by row-level security so that your account can only read its own data. Progress photos and goal pictures are stored in private storage buckets accessible only to your authenticated account. No method of transmission or storage is 100% secure, but we take commercially reasonable measures to protect your information and will notify you of any breach as required by law.</p>
 
   <h2>6. Progress Photo Privacy</h2>
   <p>Progress photos are private to you. They are visible only within your logged-in account, are never shared with other users, never used in marketing, and never shared with third parties except the storage infrastructure that hosts them (Supabase). You can delete your progress photos at any time in the App, and they are removed from storage when your account is deleted.</p>
@@ -101,7 +115,7 @@
   <p><strong>Community foods (optional):</strong> if you submit a custom food to the shared food database, its name and nutrition details become visible to other users after approval. Your name and email are never shown to other users alongside the submission.</p>
 
   <h2>8. Your Rights: Access, Export &amp; Deletion</h2>
-  <p>Depending on where you live (including under GDPR and CCPA/CPRA), you have the right to access the personal data we hold about you, receive a copy in a portable format, correct inaccurate data, and request deletion. To exercise any of these rights, contact us at <a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a> from the email associated with your account, or use the account-deletion option in the Profile tab. Account deletion removes your profile, logs, photos, and generated plans from our systems; residual copies in encrypted backups are purged on the backup rotation schedule. We respond to verified requests within 30 days. We will never discriminate against you for exercising your privacy rights.</p>
+  <p>Depending on where you live (including under GDPR and CCPA/CPRA), you have the right to access the personal data we hold about you, receive a copy in a portable format, correct inaccurate data, and request deletion. To exercise any of these rights, contact us at <a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a> from the email associated with your account, or use the account-deletion option in the Profile tab. Account deletion removes your profile, logs, photos, goal picture, and generated plans from our systems; residual copies in encrypted backups are purged on the backup rotation schedule. We respond to verified requests within 30 days. We will never discriminate against you for exercising your privacy rights.</p>
 
   <h2>9. Children’s Privacy</h2>
   <p>Ascend is not directed at children under 13, and we do not knowingly collect personal information from children under 13 (COPPA). The App requires users to be at least 16 years old. If we learn that a child under 13 has provided personal information, we will delete it promptly. Parents or guardians who believe a child has used the App can contact <a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a>.</p>
@@ -111,12 +125,21 @@
 
   <h2>11. Data Retention</h2>
   <p>We keep your data while your account is active. If you delete your account, personal data is deleted as described in Section 8. Support emails may be retained for record-keeping. Aggregated, de-identified data that cannot be linked back to you may be retained for product analytics.</p>
+  <p><strong>Retention schedule for the goal picture (Section 4B):</strong> the selfie is never stored by Ascend and is deleted from your phone as soon as your picture is made; OpenAI may keep it for up to 30 days to monitor for abuse, then deletes it. The finished goal picture is kept until you delete it or delete your account. The record of your attempts is kept until you delete your account.</p>
 
   <h2>12. Changes to This Policy</h2>
   <p>We may update this Privacy Policy as the App evolves. For material changes we will notify you in the App before the changes take effect, and the “Last updated” date above will reflect the revision. Your continued use after the effective date constitutes acceptance.</p>
 
   <h2>13. Contact</h2>
   <p>For privacy questions or requests: <a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a></p>
+
+  <h2>14. Consumer Health Data (Washington, Nevada and Similar Laws)</h2>
+  <p>This section is our Consumer Health Data Privacy Policy under Washington’s My Health My Data Act and similar state laws, such as Nevada’s consumer health data law. It is also published at <a href="/consumer-health-data.html">ascendfitness.ai/consumer-health-data.html</a>.</p>
+  <p><strong>Consumer health data we collect:</strong> body details and goals (age, sex, height, weight, body-fat estimate, body measurements, fitness goal); fitness activity (workouts, sets, and any discomfort you report); nutrition (food logs, diet type, food allergies and intolerances); sleep and recovery entries; data you choose to share from Apple Health or WHOOP; progress photos; and, only if you make one, the selfie for your goal picture and the goal picture itself. A face image can count as biometric data under these laws, even though Ascend never measures your face or makes a face template.</p>
+  <p><strong>Why we collect it:</strong> only to provide the features you use, described in Section 3: your plans, tracking, progress, the coach, and your goal picture. We never use it for advertising, and we never sell it.</p>
+  <p><strong>Where it comes from:</strong> you, in the App; Apple Health or WHOOP, if you connect them; and figures the App works out from your entries, such as calorie targets and scores.</p>
+  <p><strong>Who receives it:</strong> Supabase (hosting and private storage); Anthropic, only with your AI permission (Section 4A); OpenAI, only for a goal picture you ask for and agree to (Section 4B); and Apple Health, only for the data types you allow Ascend to write. Ascend has no affiliates that receive it.</p>
+  <p><strong>Your rights:</strong> you can ask us to confirm whether we collect or share your consumer health data, to give you a copy of it, to list every third party it was shared with (with their contact details), and to delete it. You can withdraw your consent at any time in Profile → AI &amp; Your Data, by deleting your goal picture, or by deleting your account. Email <a href="mailto:support@ascendfitness.ai">support@ascendfitness.ai</a> from the email address on your account; we respond within 45 days. If we decline your request, you can appeal by replying with "Appeal" in the subject line; we answer an appeal within 45 days, and if you disagree with the result you can contact the Washington State Attorney General (<a href="https://www.atg.wa.gov" target="_blank" rel="noopener">www.atg.wa.gov</a>) or your own state’s attorney general.</p>
 </main>
 
 <footer class="sitefoot"><div class="wrap">
@@ -124,6 +147,7 @@
     <a href="/">Home</a>
     <a href="/privacy.html">Privacy Policy</a>
     <a href="/terms.html">Terms of Service</a>
+    <a href="/consumer-health-data.html">Consumer Health Data</a>
     <a href="/manage-subscription.html">Manage subscription</a>
     <a href="mailto:support@ascendfitness.ai">Support</a>
     <a href="https://apps.apple.com/us/app/ascend-ai-fitness-nutrition/id6790593276" target="_blank" rel="noopener">App Store</a>
