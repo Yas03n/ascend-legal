@@ -52,7 +52,7 @@
     <a class="dl" href="https://apps.apple.com/us/app/ascend-ai-fitness-nutrition/id6790593276" target="_blank" rel="noopener">Download on the App Store</a>
   </div>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: October 9, 2026</p>
+  <p class="updated">Last updated: October 11, 2026</p>
 </div></header>
 
 <main class="wrap">
@@ -77,7 +77,7 @@
     <li><strong>Supabase</strong> — our database, authentication, and private photo storage.</li>
     <li><strong>Anthropic (Claude API)</strong> — our AI provider. With your permission (see Section 4A), we send Anthropic: your fitness profile (goal, age, sex, height, weight, experience, training days, session length, equipment); your food preferences (diet type, allergies and intolerances, meals per day, disliked foods); your activity in the App (logged workouts and sets, logged meals, weight entries, sleep entries, weekly totals); meal photos you choose to scan and any photos you send the coach; the messages you type to the coach; and your first name. We do <em>not</em> send your email address, Apple ID, progress photos, payment details, or raw Apple Health/WHOOP data. Anthropic processes each request only to produce the response, does not use this data to train its models, and under its commercial API terms may retain request data for a limited period for abuse detection before deleting it. Requests travel through our own server. Apart from OpenAI for the optional goal picture (below and Section 4B), no other AI company receives your data. Emails you send to our support address are also processed by Claude to classify them and draft replies (a human reviews escalated issues).</li>
     <li><strong>OpenAI (image service)</strong> — only if you choose to make a goal picture and agree on its own permission screen (see Section 4B). We send OpenAI the selfie you take for it and a short written description built from your stated answers (for example your sex and goal), never your name, email address or account details. OpenAI uses them only to make your picture, does not use them to train its models, and under its API terms may keep them for up to 30 days to monitor for abuse before deleting them.</li>
-    <li><strong>OpenStreetMap</strong> — only if you tap “Show places near me” in Eating out (see Section 4C). We send it an approximate location (about 1 km), never your exact position, your name, or any account details, only to find nearby restaurant chains.</li>
+    <li><strong>OpenStreetMap</strong> — only after you tap “Show places near me” in Eating out (see Section 4C). We send it an approximate location (about 1 km), never your exact position, your name, or any account details, only to find nearby restaurant chains.</li>
     <li><strong>RevenueCat</strong> — subscription and trial management (receives purchase status, not your health data).</li>
     <li><strong>Open Food Facts</strong> — barcode product lookups (receives scanned barcodes).</li>
     <li><strong>USDA FoodData Central</strong> — food nutrition search (receives your search terms).</li>
@@ -106,9 +106,9 @@
   <p><strong>Delete it any time.</strong> <strong>Profile → AI &amp; Your Data → Your goal picture → Delete</strong> removes the picture from your phone and from our storage straight away. Deleting your account deletes it too, along with the attempt records. Deleting your picture also withdraws your permission: nothing more is sent unless you take a new selfie and agree again.</p>
 
   <h2>4C. Nearby Restaurants (Location)</h2>
-  <p>Eating out can show you the chains near you instead of a general list. This only happens if you tap “Show places near me” — Ascend never asks for your location any other way, and never reads it in the background.</p>
+  <p>Eating out can show you the chains near you instead of a general list. This only starts when you tap “Show places near me”. After that, Ascend looks again by itself whenever you open Eating out, while location is allowed for Ascend. Ascend never asks for your location any other way, and never reads it in the background.</p>
   <p><strong>What is sent, and why.</strong> If you tap it, iOS asks you for permission to use your location only while the App is open (When-In-Use); Ascend never asks for Always access. Your location is rounded to about a kilometre on your phone before it leaves the phone — your exact position is never sent anywhere, and Ascend never sees it. That approximate location goes to our own server or directly to OpenStreetMap (an independent, donation-funded map service), whichever answers, to check which of our covered restaurant chains are nearby; only information about those restaurants comes back. Your phone may use its exact position, on the phone only, to work out how far away each one is.</p>
-  <p>We never store your location: our server never writes it to a database or keeps it in a log, and neither do we. The map service is run by others and may keep normal server logs of the requests it receives (which can include that approximate location and, when your phone asks it directly, your phone’s IP address) under its own policies.</p>
+  <p>Our server never writes your location to a database or keeps it in a log. To show the list straight away next time, your phone keeps the last answer for your approximate (about a kilometre) area on the phone itself; it is deleted when you sign out. The map service is run by others and may keep normal server logs of the requests it receives (which can include that approximate location and, when your phone asks it directly, your phone’s IP address) under its own policies.</p>
   <p>Saying no, or never tapping the button, changes nothing: your Eating out list stays exactly as it was, and Ascend does not ask again on its own. You can turn location off at any time in <strong>iOS Settings → Privacy &amp; Security → Location Services → Ascend</strong>.</p>
 
   <h2>5. Data Storage &amp; Security</h2>
