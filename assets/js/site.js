@@ -80,6 +80,92 @@
     });
   }
 
+  /* ── Light / dark toggle with the "sunrise" reveal (founder, 2026-10-14) ──
+     The new theme grows as a circle from the toggle (top right) until it
+     covers the far bottom-left corner — slow (1.5 s) and eased, never a
+     blink. View Transitions draw it in Chrome/Edge/Safari 18+; older browsers
+     get the same circle as an overlay of the new ground; reduced motion
+     switches instantly. The <head> script already set the starting theme. */
+  var root = document.documentElement;
+  var toggle = document.querySelector('.theme-toggle');
+  var meta = document.querySelector('meta[name="theme-color"]');
+  var SWEEP_MS = 1500, SWEEP_EASE = 'cubic-bezier(.65,0,.35,1)';
+  var GROUND = { light: '#f5f5f7', dark: '#06070b' };
+  var busy = false;
+  var currentTheme = function () { return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; };
+  var reflect = function () {
+    var dark = currentTheme() === 'dark';
+    if (toggle) {
+      toggle.setAttribute('aria-checked', String(dark));
+      toggle.setAttribute('aria-label', 'Dark mode');
+    }
+    if (meta) meta.setAttribute('content', GROUND[currentTheme()]);
+  };
+  var apply = function (t) {
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('ascend-theme', t); } catch (e) { /* private mode: this visit only */ }
+    reflect();
+  };
+  /* where the circle starts (the toggle's centre) and how big it must grow
+     to reach the farthest corner of the screen */
+  var origin = function () {
+    var r = toggle.getBoundingClientRect();
+    var x = r.left + r.width / 2, y = r.top + r.height / 2;
+    var radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    return { x: x, y: y, r: Math.ceil(radius) };
+  };
+  var switchTheme = function () {
+    if (busy) return;
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    if (reduce) { apply(next); return; }
+    var o = origin();
+    var from = 'circle(0px at ' + o.x + 'px ' + o.y + 'px)';
+    var to = 'circle(' + o.r + 'px at ' + o.x + 'px ' + o.y + 'px)';
+    busy = true;
+    root.classList.add('theme-swapping');
+    var done = function () { busy = false; root.classList.remove('theme-swapping'); };
+    if (document.startViewTransition) {
+      var vt = document.startViewTransition(function () { apply(next); });
+      vt.ready.then(function () {
+        root.animate({ clipPath: [from, to] }, { duration: SWEEP_MS, easing: SWEEP_EASE, pseudoElement: '::view-transition-new(root)' });
+      }).catch(done);
+      vt.finished.then(done, done);
+      return;
+    }
+    // Fallback: grow a circle of the new ground over the page, swap the theme
+    // underneath once it covers everything, then let the circle melt away.
+    var sweep = document.createElement('div');
+    sweep.className = 'theme-sweep';
+    sweep.style.background = GROUND[next];
+    sweep.style.clipPath = sweep.style.webkitClipPath = from;
+    document.body.appendChild(sweep);
+    var grow = sweep.animate
+      ? sweep.animate({ clipPath: [from, to] }, { duration: SWEEP_MS, easing: SWEEP_EASE, fill: 'forwards' })
+      : null;
+    var finish = function () {
+      apply(next);
+      sweep.style.transition = 'opacity .35s ease';
+      requestAnimationFrame(function () { sweep.style.opacity = '0'; });
+      setTimeout(function () { sweep.remove(); done(); }, 400);
+    };
+    if (grow) grow.onfinish = finish; else setTimeout(finish, 10);
+  };
+  if (toggle) {
+    reflect();
+    toggle.addEventListener('click', switchTheme);   // <button>: Enter and Space work too
+  }
+  // Follow the device while the visitor has not picked a theme themselves.
+  try {
+    var saved = localStorage.getItem('ascend-theme');
+    if (!saved && window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+        var stillUnset = true;
+        try { stillUnset = !localStorage.getItem('ascend-theme'); } catch (err) {}
+        if (stillUnset) { root.setAttribute('data-theme', e.matches ? 'light' : 'dark'); reflect(); }
+      });
+    }
+  } catch (e) { /* storage blocked: the head script's choice stands */ }
+
   /* ── Footer year ─────────────────────────────────────────────────────── */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());
