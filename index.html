@@ -6,6 +6,21 @@
 <title>Ascend Fitness &amp; Nutrition — workouts, meals and recovery in one app</title>
 <meta name="description" content="Ascend Fitness &amp; Nutrition for iPhone: personal, rule-based workout plans with demo videos, a muscle recovery map, meal plans that hit your numbers, 137 restaurants ranked for your goal, fast logging and progress, in one app.">
 <meta name="theme-color" content="#06070b">
+<meta name="color-scheme" content="dark light">
+<script>
+/* Theme before first paint (no flash): the visitor's saved pick, else the
+   device's light/dark setting. Storage can throw (private mode) — fall back. */
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('ascend-theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') {
+    t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+  var m = document.querySelector('meta[name="theme-color"]');
+  if (m) m.setAttribute('content', t === 'light' ? '#f5f5f7' : '#06070b');
+})();
+</script>
 <meta name="apple-itunes-app" content="app-id=6790593276">
 <link rel="canonical" href="https://ascendfitness.ai/">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
@@ -54,7 +69,14 @@
         <li><a href="#progress">Progress</a></li>
       </ul>
     </nav>
-    <a class="btn" data-store href="https://apps.apple.com/app/id6790593276" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.1 1.72-3.1 1.8-3.15-1-1.43-2.5-1.63-3.05-1.65-1.3-.13-2.54.77-3.2.77-.66 0-1.68-.75-2.76-.73-1.42.02-2.73.83-3.46 2.1-1.48 2.56-.38 6.36 1.06 8.44.7 1.02 1.54 2.16 2.63 2.12 1.06-.04 1.46-.68 2.74-.68 1.28 0 1.64.68 2.76.66 1.14-.02 1.86-1.03 2.55-2.06.8-1.18 1.13-2.32 1.15-2.38-.03-.01-2.2-.85-2.22-3.44Zm-2.1-6.3c.58-.7.97-1.68.86-2.65-.83.03-1.85.56-2.45 1.26-.54.62-1.01 1.62-.88 2.57.93.07 1.88-.47 2.47-1.18Z"/></svg>Download</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" type="button" role="switch" aria-checked="true" aria-label="Dark mode" title="Switch between light and dark">
+        <span class="knob" aria-hidden="true"></span>
+        <span class="ico sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></span>
+        <span class="ico moon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.2 14.6A8.5 8.5 0 0 1 9.4 3.8a.6.6 0 0 0-.8-.7A9.3 9.3 0 1 0 20.9 15.4a.6.6 0 0 0-.7-.8Z"/></svg></span>
+      </button>
+      <a class="btn" data-store href="https://apps.apple.com/app/id6790593276" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.1 1.72-3.1 1.8-3.15-1-1.43-2.5-1.63-3.05-1.65-1.3-.13-2.54.77-3.2.77-.66 0-1.68-.75-2.76-.73-1.42.02-2.73.83-3.46 2.1-1.48 2.56-.38 6.36 1.06 8.44.7 1.02 1.54 2.16 2.63 2.12 1.06-.04 1.46-.68 2.74-.68 1.28 0 1.64.68 2.76.66 1.14-.02 1.86-1.03 2.55-2.06.8-1.18 1.13-2.32 1.15-2.38-.03-.01-2.2-.85-2.22-3.44Zm-2.1-6.3c.58-.7.97-1.68.86-2.65-.83.03-1.85.56-2.45 1.26-.54.62-1.01 1.62-.88 2.57.93.07 1.88-.47 2.47-1.18Z"/></svg>Download</a>
+    </div>
   </div>
 </header>
 
@@ -80,21 +102,37 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen" id="hero-screen">
-          <picture class="is-on" data-screen="home">
+          <picture class="shot shot-dark is-on" data-screen="home">
             <source srcset="/assets/img/screens/home.webp" type="image/webp">
             <img src="/assets/img/screens/home.png" width="780" height="1696" fetchpriority="high" alt="Ascend Home: today&#x27;s Upper workout with 8 exercises and about 55 minutes, a Start workout button, Edit days and this week&#x27;s calendar">
           </picture>
-          <picture data-screen="session">
+          <picture class="shot shot-light is-on" data-screen="home">
+            <source srcset="/assets/img/screens/home-light.webp" type="image/webp">
+            <img src="/assets/img/screens/home-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Home: today&#x27;s Upper workout with 8 exercises and about 55 minutes, a Start workout button, Edit days and this week&#x27;s calendar">
+          </picture>
+          <picture class="shot shot-dark" data-screen="session">
             <source srcset="/assets/img/screens/session.webp" type="image/webp">
             <img src="/assets/img/screens/session.png" width="780" height="1696" loading="lazy" decoding="async" alt="An Ascend workout in progress: the Push-Up demo video with the chest highlighted, set 1 of 3, weight and reps steppers and a Done button">
           </picture>
-          <picture data-screen="meals">
+          <picture class="shot shot-light" data-screen="session">
+            <source srcset="/assets/img/screens/session-light.webp" type="image/webp">
+            <img src="/assets/img/screens/session-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="An Ascend workout in progress: the Push-Up demo video with the chest highlighted, set 1 of 3, weight and reps steppers and a Done button">
+          </picture>
+          <picture class="shot shot-dark" data-screen="meals">
             <source srcset="/assets/img/screens/meals.webp" type="image/webp">
             <img src="/assets/img/screens/meals.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals: the Nutrition and Eating out switch above Wednesday&#x27;s plan of protein pancakes, a tuna salad wrap and hummus with veggies, each with its own photo and macros">
           </picture>
-          <picture data-screen="eating-out-near">
+          <picture class="shot shot-light" data-screen="meals">
+            <source srcset="/assets/img/screens/meals-light.webp" type="image/webp">
+            <img src="/assets/img/screens/meals-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals: the Nutrition and Eating out switch above Wednesday&#x27;s plan of protein pancakes, a tuna salad wrap and hummus with veggies, each with its own photo and macros">
+          </picture>
+          <picture class="shot shot-dark" data-screen="eating-out-near">
             <source srcset="/assets/img/screens/eating-out-near.webp" type="image/webp">
             <img src="/assets/img/screens/eating-out-near.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals with the switch on Eating out: the Eating out guide&#x27;s best options nearby (Yard House, Potbelly and Popeyes with an order, distance and calories each), then the Near you list in feet and miles with open and closed times and a Refresh location button">
+          </picture>
+          <picture class="shot shot-light" data-screen="eating-out-near">
+            <source srcset="/assets/img/screens/eating-out-near-light.webp" type="image/webp">
+            <img src="/assets/img/screens/eating-out-near-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals with the switch on Eating out: the Eating out guide&#x27;s best options nearby (Yard House, Potbelly and Popeyes with an order, distance and calories each), then the Near you list in feet and miles with open and closed times and a Refresh location button">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -124,9 +162,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/muscle-map.webp" type="image/webp">
             <img src="/assets/img/screens/muscle-map.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Home&#x27;s muscle map: 8 of 14 muscles ready to train, with chest, front delts and upper back still recovering">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/muscle-map-light.webp" type="image/webp">
+            <img src="/assets/img/screens/muscle-map-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Home&#x27;s muscle map: 8 of 14 muscles ready to train, with chest, front delts and upper back still recovering">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -136,9 +178,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/home.webp" type="image/webp">
             <img src="/assets/img/screens/home.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Home: today&#x27;s Upper workout with 8 exercises and about 55 minutes, a Start workout button, Edit days and this week&#x27;s calendar">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/home-light.webp" type="image/webp">
+            <img src="/assets/img/screens/home-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Home: today&#x27;s Upper workout with 8 exercises and about 55 minutes, a Start workout button, Edit days and this week&#x27;s calendar">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -166,9 +212,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/emergency.webp" type="image/webp">
             <img src="/assets/img/screens/emergency.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Emergency exercise: follow my plan, pick muscles, full body or Home, no gym, then how many minutes you have">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/emergency-light.webp" type="image/webp">
+            <img src="/assets/img/screens/emergency-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Emergency exercise: follow my plan, pick muscles, full body or Home, no gym, then how many minutes you have">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -178,9 +228,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/session.webp" type="image/webp">
             <img src="/assets/img/screens/session.png" width="780" height="1696" loading="lazy" decoding="async" alt="An Ascend workout in progress: the Push-Up demo video with the chest highlighted, set 1 of 3, weight and reps steppers and a Done button">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/session-light.webp" type="image/webp">
+            <img src="/assets/img/screens/session-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="An Ascend workout in progress: the Push-Up demo video with the chest highlighted, set 1 of 3, weight and reps steppers and a Done button">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -207,9 +261,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/recovery.webp" type="image/webp">
             <img src="/assets/img/screens/recovery.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Progress, Body view: the muscle recovery map with chest, front delts and upper back strained after an upper-body session, and the Strained card open">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/recovery-light.webp" type="image/webp">
+            <img src="/assets/img/screens/recovery-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Progress, Body view: the muscle recovery map with chest, front delts and upper back strained after an upper-body session, and the Strained card open">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -233,9 +291,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/meals.webp" type="image/webp">
             <img src="/assets/img/screens/meals.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals: the Nutrition and Eating out switch above Wednesday&#x27;s plan of protein pancakes, a tuna salad wrap and hummus with veggies, each with its own photo and macros">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/meals-light.webp" type="image/webp">
+            <img src="/assets/img/screens/meals-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals: the Nutrition and Eating out switch above Wednesday&#x27;s plan of protein pancakes, a tuna salad wrap and hummus with veggies, each with its own photo and macros">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -261,9 +323,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/eating-out-grid.webp" type="image/webp">
             <img src="/assets/img/screens/eating-out-grid.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Eating out restaurant grid: a search box for Chipotle, CAVA, Taco Bell and more, then nearby chains nearest first, including Sweetgreen, Starbucks, Shake Shack, Chipotle, Dunkin&#x27; and Chick-fil-A, each with its real logo and food art">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/eating-out-grid-light.webp" type="image/webp">
+            <img src="/assets/img/screens/eating-out-grid-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Eating out restaurant grid: a search box for Chipotle, CAVA, Taco Bell and more, then nearby chains nearest first, including Sweetgreen, Starbucks, Shake Shack, Chipotle, Dunkin&#x27; and Chick-fil-A, each with its real logo and food art">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -273,9 +339,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/eating-out-near.webp" type="image/webp">
             <img src="/assets/img/screens/eating-out-near.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals with the switch on Eating out: the Eating out guide&#x27;s best options nearby (Yard House, Potbelly and Popeyes with an order, distance and calories each), then the Near you list in feet and miles with open and closed times and a Refresh location button">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/eating-out-near-light.webp" type="image/webp">
+            <img src="/assets/img/screens/eating-out-near-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals with the switch on Eating out: the Eating out guide&#x27;s best options nearby (Yard House, Potbelly and Popeyes with an order, distance and calories each), then the Near you list in feet and miles with open and closed times and a Refresh location button">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -300,9 +370,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/eating-out.webp" type="image/webp">
             <img src="/assets/img/screens/eating-out.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend at In-N-Out: the menu ranked for building muscle, with the top three orders marked">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/eating-out-light.webp" type="image/webp">
+            <img src="/assets/img/screens/eating-out-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend at In-N-Out: the menu ranked for building muscle, with the top three orders marked">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -327,9 +401,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/log.webp" type="image/webp">
             <img src="/assets/img/screens/log.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Log: 1,740 kcal to go with protein, carbs and fat bars, Snap a meal and Scan a barcode, and breakfast and lunch logged">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/log-light.webp" type="image/webp">
+            <img src="/assets/img/screens/log-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Log: 1,740 kcal to go with protein, carbs and fat bars, Snap a meal and Scan a barcode, and breakfast and lunch logged">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -355,9 +433,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/strength.webp" type="image/webp">
             <img src="/assets/img/screens/strength.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Progress Strength: total weight moved, average session, sets and reps logged, and volume growth">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/strength-light.webp" type="image/webp">
+            <img src="/assets/img/screens/strength-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Progress Strength: total weight moved, average session, sets and reps logged, and volume growth">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -367,9 +449,13 @@
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
-          <picture>
+          <picture class="shot shot-dark">
             <source srcset="/assets/img/screens/progress.webp" type="image/webp">
             <img src="/assets/img/screens/progress.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Progress Overview: the front and back muscle map, this week&#x27;s sessions and a weight trend">
+          </picture>
+          <picture class="shot shot-light">
+            <source srcset="/assets/img/screens/progress-light.webp" type="image/webp">
+            <img src="/assets/img/screens/progress-light.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Progress Overview: the front and back muscle map, this week&#x27;s sessions and a weight trend">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
