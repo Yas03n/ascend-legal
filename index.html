@@ -92,9 +92,9 @@
             <source srcset="/assets/img/screens/meals.webp" type="image/webp">
             <img src="/assets/img/screens/meals.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals: the Nutrition and Eating out switch above Wednesday&#x27;s plan of protein pancakes, a tuna salad wrap and hummus with veggies, each with its own photo and macros">
           </picture>
-          <picture data-screen="near-you">
-            <source srcset="/assets/img/screens/near-you.webp" type="image/webp">
-            <img src="/assets/img/screens/near-you.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Eating out guide: nearby Chick-fil-A, Panda Express and Subway with distances, a suggested order and its calories">
+          <picture data-screen="eating-out-near">
+            <source srcset="/assets/img/screens/eating-out-near.webp" type="image/webp">
+            <img src="/assets/img/screens/eating-out-near.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals with the switch on Eating out: the Eating out guide&#x27;s best options nearby (Yard House, Potbelly and Popeyes with an order, distance and calories each), then the Near you list in feet and miles with open and closed times and a Refresh location button">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
@@ -103,7 +103,7 @@
         <button type="button" data-show="home" aria-pressed="true">Today</button>
         <button type="button" data-show="session" aria-pressed="false">Workout</button>
         <button type="button" data-show="meals" aria-pressed="false">Meals</button>
-        <button type="button" data-show="near-you" aria-pressed="false">Eating out</button>
+        <button type="button" data-show="eating-out-near" aria-pressed="false">Eating out</button>
       </div>
     </div>
   </div>
@@ -156,7 +156,7 @@
       <div class="rows reveal" style="--d:180ms">
         <div class="row"><img class="emblem" src="/assets/img/emblems/stopwatch.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>Emergency workouts</strong><span>Short on time? Pick the minutes, even at home with no gym.</span></div></div>
         <div class="row"><img class="emblem" src="/assets/img/emblems/calendar.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>Edit days</strong><span>Change your training days and session length, and the plan follows.</span></div></div>
-        <div class="row"><img class="emblem" src="/assets/img/emblems/dumbbell.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>I skipped this day<em class="chip-soon" style="font-style:normal">Next update</em></strong><span>Moves your week forward so nothing piles up.</span></div></div>
+        <div class="row"><img class="emblem" src="/assets/img/emblems/dumbbell.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>I skipped this day</strong><span>Moves your week forward so nothing piles up.</span></div></div>
       </div>
     </div>
     <div class="feature-visual reveal" style="--d:100ms">
@@ -248,10 +248,10 @@
     <div class="feature-copy">
       <span class="eyebrow reveal">Eating out</span>
       <h2 class="reveal" style="--d:60ms">137 restaurants, ranked for your&nbsp;goal.</h2>
-      <p class="lede reveal" style="--d:120ms">Over 3,000 menu items with real nutrition, ordered so the best pick for your goal sits at the top.</p>
+      <p class="lede reveal" style="--d:120ms">Flip the switch to Eating out for the best options around you, the places near you, and every chain we have menus for.</p>
       <div class="rows reveal" style="--d:180ms">
-        <div class="row"><img class="emblem" src="/assets/img/emblems/storefront.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>Near you</strong><span>Open or closed at a glance, with Directions, Uber Eats and DoorDash one tap away.</span></div></div>
-        <div class="row"><img class="emblem" src="/assets/img/emblems/trophy.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>Diamond, gold and silver<em class="chip-soon" style="font-style:normal">Next update</em></strong><span>The top three orders on every menu get a medal.</span></div></div>
+        <div class="row"><img class="emblem" src="/assets/img/emblems/fork_and_knife.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>Best options</strong><span>Three picks for your goal from the places near you.</span></div></div>
+        <div class="row"><img class="emblem" src="/assets/img/emblems/storefront.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>Near you</strong><span>Distances in feet and miles, open or closed at a glance, and Directions, Uber Eats or DoorDash one tap away.</span></div></div>
       </div>
     </div>
     <div class="feature-visual reveal" style="--d:100ms">
@@ -262,13 +262,40 @@
         <div class="iphone-bezel"></div>
         <div class="iphone-screen">
           <picture>
-            <source srcset="/assets/img/screens/near-you.webp" type="image/webp">
-            <img src="/assets/img/screens/near-you.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Eating out guide: nearby Chick-fil-A, Panda Express and Subway with distances, a suggested order and its calories">
+            <source srcset="/assets/img/screens/eating-out-grid.webp" type="image/webp">
+            <img src="/assets/img/screens/eating-out-grid.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Eating out restaurant grid: a search box for Chipotle, CAVA, Taco Bell and more, then nearby chains nearest first, including Sweetgreen, Starbucks, Shake Shack, Chipotle, Dunkin&#x27; and Chick-fil-A, each with its real logo and food art">
           </picture>
           <span class="island" aria-hidden="true"></span>
         </div>
       </div>
       <div class="iphone front">
+        <span class="key l k-action" aria-hidden="true"></span><span class="key l k-volup" aria-hidden="true"></span><span class="key l k-voldn" aria-hidden="true"></span>
+        <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
+        <div class="iphone-bezel"></div>
+        <div class="iphone-screen">
+          <picture>
+            <source srcset="/assets/img/screens/eating-out-near.webp" type="image/webp">
+            <img src="/assets/img/screens/eating-out-near.png" width="780" height="1696" loading="lazy" decoding="async" alt="Ascend Meals with the switch on Eating out: the Eating out guide&#x27;s best options nearby (Yard House, Potbelly and Popeyes with an order, distance and calories each), then the Near you list in feet and miles with open and closed times and a Refresh location button">
+          </picture>
+          <span class="island" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<section class="feature flip" id="menus">
+  <div class="wrap">
+    <div class="feature-copy">
+      <span class="eyebrow reveal">Menus</span>
+      <h2 class="reveal" style="--d:60ms">Every menu, ranked for your&nbsp;goal.</h2>
+      <p class="lede reveal" style="--d:120ms">Over 3,000 menu items with real nutrition, ordered so the best pick for your goal sits at the top.</p>
+      <div class="rows reveal" style="--d:180ms">
+        <div class="row"><img class="emblem" src="/assets/img/emblems/trophy.webp" width="40" height="40" loading="lazy" decoding="async" alt=""><div><strong>Diamond, gold and silver<em class="chip-soon" style="font-style:normal">Next update</em></strong><span>The top three orders on every menu get a medal.</span></div></div>
+      </div>
+    </div>
+    <div class="feature-visual reveal" style="--d:100ms">
+      <div class="iphone">
         <span class="key l k-action" aria-hidden="true"></span><span class="key l k-volup" aria-hidden="true"></span><span class="key l k-voldn" aria-hidden="true"></span>
         <span class="key r k-side" aria-hidden="true"></span><span class="key r k-cam" aria-hidden="true"></span>
         <div class="iphone-bezel"></div>
@@ -281,10 +308,9 @@
         </div>
       </div>
     </div>
-    </div>
   </div>
 </section>
-<section class="feature flip" id="log">
+<section class="feature" id="log">
   <div class="wrap">
     <div class="feature-copy">
       <span class="eyebrow reveal">Logging</span>
@@ -311,7 +337,7 @@
     </div>
   </div>
 </section>
-<section class="feature" id="progress">
+<section class="feature flip" id="progress">
   <div class="wrap">
     <div class="feature-copy">
       <span class="eyebrow reveal">Progress</span>
