@@ -37,11 +37,12 @@
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.glass-toggle [data-show]'));
   if (screen && buttons.length) {
     var pics = Array.prototype.slice.call(screen.querySelectorAll('picture[data-screen]'));
-    var order = pics.map(function (p) { return p.getAttribute('data-screen'); });
+    // every screen is there twice (dark + light app captures): order the unique names
+    var order = pics.map(function (p) { return p.getAttribute('data-screen'); }).filter(function (n, i, a) { return a.indexOf(n) === i; });
     var current = 0, timer = null, visible = true, userPicked = false;
     var show = function (i) {
       current = (i + order.length) % order.length;
-      pics.forEach(function (p, j) { p.classList.toggle('is-on', j === current); });
+      pics.forEach(function (p) { p.classList.toggle('is-on', p.getAttribute('data-screen') === order[current]); });
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-show') === order[current])); });
     };
     var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
@@ -114,7 +115,33 @@
     var radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
     return { x: x, y: y, r: Math.ceil(radius) };
   };
+  /* The phones show the app in the page's theme. Before the reveal starts,
+     make sure the other theme's screens that are on screen are fetched and
+     decoded, so the phones inside the growing circle are already switched.
+     Reaching for the toggle (hover / focus / touch) starts the fetch early. */
+  var shotsFor = function (t) { return Array.prototype.slice.call(document.querySelectorAll('.shot-' + t + ' img')); };
+  var warm = function (t) {
+    shotsFor(t).forEach(function (img) { if (img.loading === 'lazy') img.loading = 'eager'; });
+  };
+  var readyOnScreen = function (t) {
+    var vh = innerHeight;
+    var visible = shotsFor(t).filter(function (img) {
+      var r = img.closest('.iphone').getBoundingClientRect();
+      return r.bottom > -vh * 0.25 && r.top < vh * 1.25;
+    });
+    var decoded = Promise.all(visible.map(function (img) {
+      if (img.loading === 'lazy') img.loading = 'eager';
+      return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+    }));
+    return Promise.race([decoded, new Promise(function (r) { setTimeout(r, 700); })]);
+  };
   var switchTheme = function () {
+    if (busy) return;
+    busy = true;
+    var target = currentTheme() === 'dark' ? 'light' : 'dark';
+    readyOnScreen(target).then(function () { busy = false; runSwitch(); });
+  };
+  var runSwitch = function () {
     if (busy) return;
     var next = currentTheme() === 'dark' ? 'light' : 'dark';
     if (reduce) { apply(next); return; }
@@ -153,6 +180,8 @@
   if (toggle) {
     reflect();
     toggle.addEventListener('click', switchTheme);   // <button>: Enter and Space work too
+    var warmOther = function () { warm(currentTheme() === 'dark' ? 'light' : 'dark'); };
+    ['pointerenter', 'focus', 'touchstart'].forEach(function (ev) { toggle.addEventListener(ev, warmOther, { passive: true }); });
   }
   // Follow the device while the visitor has not picked a theme themselves.
   try {

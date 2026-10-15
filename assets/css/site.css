@@ -173,6 +173,9 @@ p{margin:0}
    is enough in every current browser. */
 .iphone-screen{position:absolute;inset:var(--e);border-radius:var(--rs);overflow:hidden;background:#06070b;isolation:isolate}
 .iphone-screen picture,.iphone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* each screen exists twice — the app in dark and in light (real captures,
+   2026-10-14); only the one for the page's theme is shown */
+:root[data-theme="light"] .shot-dark,:root:not([data-theme="light"]) .shot-light{display:none}
 /* glass: a soft diagonal glare + a hairline rim where the glass meets the frame */
 .iphone-screen::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;
   background:linear-gradient(118deg,rgba(255,255,255,.075) 0%,rgba(255,255,255,.02) 28%,rgba(255,255,255,0) 42%);
