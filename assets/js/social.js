@@ -12,4 +12,4 @@ window.ASCEND_SOCIAL = {
   email: 'mailto:support@ascendfitness.ai',
 };
 // App Store listing (name now "Ascend Fitness & Nutrition"); the id-only URL survives renames.
-window.ASCEND_APP_STORE_URL = 'https://apps.apple.com/app/id6790593276';
+window.ASCEND_APP_STORE_URL = 'https://apps.apple.com/app/apple-store/id6790593276?pt=129156151&ct=website&mt=8';
