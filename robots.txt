@@ -1,3 +1,5 @@
+# ascendfitness.ai — public marketing site
 User-agent: *
 Allow: /
+
 Sitemap: https://ascendfitness.ai/sitemap.xml

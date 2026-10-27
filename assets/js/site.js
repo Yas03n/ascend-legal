@@ -40,9 +40,21 @@
     // every screen is there twice (dark + light app captures): order the unique names
     var order = pics.map(function (p) { return p.getAttribute('data-screen'); }).filter(function (n, i, a) { return a.indexOf(n) === i; });
     var current = 0, timer = null, visible = true, userPicked = false;
+    var hydratePicture = function (picture) {
+      if (!picture) return;
+      Array.prototype.forEach.call(picture.querySelectorAll('source[data-srcset]'), function (source) {
+        if (!source.getAttribute('srcset')) source.setAttribute('srcset', source.getAttribute('data-srcset'));
+      });
+      var img = picture.querySelector('img[data-src]');
+      if (img && !img.getAttribute('src')) img.setAttribute('src', img.getAttribute('data-src'));
+    };
     var show = function (i) {
       current = (i + order.length) % order.length;
-      pics.forEach(function (p) { p.classList.toggle('is-on', p.getAttribute('data-screen') === order[current]); });
+      pics.forEach(function (p) {
+        var on = p.getAttribute('data-screen') === order[current];
+        if (on) hydratePicture(p);
+        p.classList.toggle('is-on', on);
+      });
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-show') === order[current])); });
     };
     var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
@@ -119,14 +131,32 @@
      make sure the other theme's screens that are on screen are fetched and
      decoded, so the phones inside the growing circle are already switched.
      Reaching for the toggle (hover / focus / touch) starts the fetch early. */
+  var hydratePicture = function (picture) {
+    if (!picture || picture.getAttribute('data-hydrated') === '1') return;
+    Array.prototype.forEach.call(picture.querySelectorAll('source[data-srcset]'), function (source) {
+      if (!source.getAttribute('srcset')) source.setAttribute('srcset', source.getAttribute('data-srcset'));
+    });
+    var img = picture.querySelector('img[data-src]');
+    if (img && !img.getAttribute('src')) img.setAttribute('src', img.getAttribute('data-src'));
+    picture.setAttribute('data-hydrated', '1');
+  };
   var shotsFor = function (t) { return Array.prototype.slice.call(document.querySelectorAll('.shot-' + t + ' img')); };
   var warm = function (t) {
+    Array.prototype.forEach.call(document.querySelectorAll('.shot-' + t), hydratePicture);
     shotsFor(t).forEach(function (img) { if (img.loading === 'lazy') img.loading = 'eager'; });
   };
   var readyOnScreen = function (t) {
     var vh = innerHeight;
+    Array.prototype.forEach.call(document.querySelectorAll('.shot-' + t), function (picture) {
+      var phone = picture.closest('.iphone');
+      if (!phone) return;
+      var box = phone.getBoundingClientRect();
+      if (box.bottom > -vh * 0.25 && box.top < vh * 1.25) hydratePicture(picture);
+    });
     var visible = shotsFor(t).filter(function (img) {
-      var r = img.closest('.iphone').getBoundingClientRect();
+      var phone = img.closest('.iphone');
+      if (!phone) return false;
+      var r = phone.getBoundingClientRect();
       return r.bottom > -vh * 0.25 && r.top < vh * 1.25;
     });
     var decoded = Promise.all(visible.map(function (img) {
