@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ascendfitness.ai/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://ascendfitness.ai/privacy.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://ascendfitness.ai/terms.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://ascendfitness.ai/consumer-health-data.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://ascendfitness.ai/manage-subscription.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://ascendfitness.ai/</loc><lastmod>2026-10-27</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://ascendfitness.ai/blog/</loc><lastmod>2026-10-27</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ascendfitness.ai/blog/how-to-start-working-out/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ascendfitness.ai/blog/how-much-protein-do-you-need/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ascendfitness.ai/blog/eat-healthy-at-restaurants/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ascendfitness.ai/restaurants/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ascendfitness.ai/restaurants/chipotle/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ascendfitness.ai/restaurants/chick-fil-a/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ascendfitness.ai/restaurants/in-n-out/</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ascendfitness.ai/privacy.html</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://ascendfitness.ai/terms.html</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://ascendfitness.ai/consumer-health-data.html</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://ascendfitness.ai/manage-subscription.html</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
 </urlset>
